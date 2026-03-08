@@ -88,7 +88,7 @@ app.post('/api/ia/buscar-imagen', async (req, res) => {
 });
 
 // Servir el frontend para cualquier otra ruta (SPA fallback opcional)
-app.get('/*', (req, res) => {
+app.get('/:path*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 

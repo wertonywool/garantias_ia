@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Royal | GarantíaPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/inventory.css">
+    
+    <!-- SDK de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <!-- Configuración y Seguridad -->
+    <script src="../js/firebase_config.js"></script>
+    <script src="../js/auth_guard.js"></script>
+</head>
+<body style="display: none;"> <!-- Oculto hasta que auth_guard confirme sesión -->
+
+    <aside class="sidebar">
+        <div style="font-weight: 900; font-size: 1.4rem; margin-bottom: 3rem;">G<span style="color:var(--primary)">P</span></div>
+        <nav>
+            <a href="../index.html" class="nav-item">📊 Dashboard</a>
+            <a href="inventory.html" class="nav-item active">📦 Inventario</a>
+            <a href="history.html" class="nav-item">🕒 Historial</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="header-section">
+            <div>
+                <h1>Gestión de Activos</h1>
+                <p class="text-muted">Visualiza y organiza todos tus equipos y sus garantías.</p>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <!-- SECCIÓN DE PERFIL -->
+                <div id="userSection" class="user-bar">
+                    <div class="user-info-text">
+                        <span id="userNameDisplay" class="user-name">Usuario</span>
+                        <span id="userEmailDisplay" class="user-email">Cargando...</span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-profile" onclick="openProfile()">Perfil</button>
+                        <button class="btn-logout" onclick="logout()">Salir</button>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <button class="btn-manual" onclick="location.href='new_item.html'">+ Registro Manual</button>
+                    <a href="ia_wizard.html" class="btn-ia-wizard">
+                        <span>✨</span> Hacer con IA
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="inventory-grid" id="inventoryGrid"></div>
+    </main>
+
+    <div class="floating-toolbar">
+        <a href="../index.html" class="tool-btn">Inicio</a>
+        <a href="history.html" class="tool-btn">Actividad</a>
+        <a href="alerts.html" class="tool-btn">Alertas</a>
+        <a href="ia_wizard.html" class="tool-btn" style="color: #8b5cf6;">Gemini IA</a>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/inventory.js"></script>
+</body>
+</html>

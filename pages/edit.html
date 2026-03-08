@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Activo | GarantíaPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/edit.css">
+    <!-- Supabase y Protección Global -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth_guard.js"></script>
+</head>
+<body>
+
+    <div class="main-content">
+        <a href="inventory.html" class="back-link">← Volver al Inventario</a>
+        
+        <header style="margin-bottom: 2.5rem;">
+            <h1 id="pageTitle">Editar Activo</h1>
+            <p class="text-muted">Personaliza la categoría y detalles avanzados del equipo.</p>
+        </header>
+
+        <div class="editor-grid">
+            <div class="image-section">
+                <div class="image-preview" id="previewContainer">
+                    <div class="ai-loader" id="aiLoader">
+                        <span style="font-size: 2rem;">🤖</span>
+                        <p style="font-weight: 800; font-size: 0.8rem;">Buscando Imagen...</p>
+                    </div>
+                    <span id="placeholderText">📸 Sin imagen</span>
+                    <img id="imgDisplay" src="" style="display: none;">
+                </div>
+                
+                <label class="upload-btn">Subir Foto Local <input type="file" id="fileInput" hidden accept="image/*"></label>
+                <div style="display: flex; gap: 8px; flex-direction: column;">
+                    <button type="button" id="btnMagicIA" class="btn" style="background: var(--primary-soft); color: var(--ai-purple); width: 100%; font-size: 0.8rem; border: 1px solid var(--ai-purple);" onclick="magicImageIA()">✨ Auto-completar Imagen (IA)</button>
+                    <button type="button" id="btnRetryIA" class="btn" style="background: #f8fafc; color: #64748b; width: 100%; font-size: 0.8rem; border: 1px solid #e2e8f0; display: none;" onclick="magicImageIA()">🔄 Reintentar con otra imagen</button>
+                </div>
+                <div id="aiStatus">🪄 Imagen actualizada por Gemini.</div>
+            </div>
+
+            <div class="form-section">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label>Nombre del Equipo</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Precio Pagado ($)</label>
+                            <input type="number" id="editPrice" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Compra</label>
+                            <input type="date" id="editDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Categoría del Activo</label>
+                        <select id="categorySelect" onchange="checkCustomCategory(this.value)">
+                            <option value="Tecnología">💻 Tecnología</option>
+                            <option value="Electrodomésticos">🏠 Electrodomésticos</option>
+                            <option value="Herramientas">🛠️ Herramientas</option>
+                            <option value="Mobiliario">🛋️ Mobiliario</option>
+                            <option value="Vehículos">🚗 Vehículos</option>
+                            <option value="OTRA">➕ Escribir categoría propia...</option>
+                        </select>
+                        <input type="text" id="customCategory" placeholder="Escribe tu categoría aquí..." style="display:none; margin-top:10px; border-color: var(--ai-purple);">
+                    </div>
+
+                    <div class="advanced-toggle" onclick="toggleAdvanced()">⚙️ Opciones Avanzadas</div>
+                    
+                    <div class="advanced-section" id="advancedSection">
+                        <div class="form-group">
+                            <label>Garantía Restante (Meses)</label>
+                            <input type="number" id="editMonths">
+                        </div>
+                        <div class="form-group">
+                            <label>Número de Serie / IMEI</label>
+                            <input type="text" id="editSerial" placeholder="Ej: SN-9920-XX">
+                        </div>
+                        <div class="form-group">
+                            <label>Notas adicionales</label>
+                            <textarea id="editNotes" rows="2" placeholder="Ej: Comprado en promoción, incluye funda..."></textarea>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: #0f172a;">🛠️ Plan de Mantenimiento Sugerido</h3>
+                        <div id="tasksContainer" class="tasks-list-edit">
+                            <!-- Las tareas se cargarán aquí -->
+                            <p class="text-muted" style="font-size: 0.85rem;">Cargando tareas...</p>
+                        </div>
+                    </div>
+
+                    <div class="actions-panel">
+                        <button type="submit" class="btn btn-save">💾 Guardar Cambios</button>
+                        <button type="button" class="btn btn-ai" onclick="askIA()">✨ Consultar IA</button>
+                        <button type="button" class="btn btn-bill" onclick="viewBilling()">📄 Facturación</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/edit.js"></script>
+</body>
+</html>

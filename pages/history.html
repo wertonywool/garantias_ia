@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Maestro | GarantíaPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/history.css">
+    <!-- Supabase y Protección Global -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth_guard.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 2.5rem;">GP <span style="color:var(--primary)">Pro</span></div>
+        <nav>
+            <a href="../index.html" class="nav-item">📊 Dashboard</a>
+            <a href="inventory.html" class="nav-item">📦 Inventario</a>
+            <a href="history.html" class="nav-item active">🕒 Historial</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header style="margin-bottom: 2rem;">
+            <h1>Auditoría de Actividad</h1>
+            <p class="text-muted">Control total sobre los movimientos del sistema.</p>
+        </header>
+
+        <section class="filter-panel">
+            <div class="filter-group">
+                <label>Rango de Tiempo</label>
+                <select id="timeFilter" onchange="renderHistory()">
+                    <option value="all">Todo el tiempo</option>
+                    <option value="hour">Hace 1 hora</option>
+                    <option value="day">Hoy</option>
+                    <option value="week">Esta semana</option>
+                    <option value="month">Este mes</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Tipo de Evento</label>
+                <select id="typeFilter" onchange="renderHistory()">
+                    <option value="all">Todos los eventos</option>
+                    <option value="Alta">Nuevos Registros</option>
+                    <option value="Edicion">Ediciones</option>
+                    <option value="Baja">Eliminaciones</option>
+                    <option value="Vencimiento">Alertas</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="timeline" id="logContainer"></section>
+    </main>
+
+    <script src="../js/history.js"></script>
+</body>
+</html>

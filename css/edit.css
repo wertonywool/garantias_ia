@@ -1,0 +1,52 @@
+:root {
+    --primary: #0052ff;
+    --primary-soft: #eef4ff;
+    --success: #10b981;
+    --danger: #ef4444;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --radius: 20px;
+    --ai-purple: #8b5cf6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); }
+
+.main-content { flex: 1; padding: 3rem; max-width: 1100px; margin: 0 auto; }
+.back-link { text-decoration: none; color: var(--primary); font-weight: 700; display: inline-block; margin-bottom: 2rem; }
+
+.editor-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2.5rem; }
+
+/* --- SECCIÓN IMAGEN --- */
+.image-section { background: var(--white); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border); text-align: center; position: relative; }
+.image-preview { width: 100%; height: 300px; background: #f1f5f9; border-radius: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 1.5rem; border: 2px dashed var(--border); position: relative; }
+.image-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+.ai-loader { position: absolute; inset: 0; background: rgba(139, 92, 246, 0.8); display: none; flex-direction: column; align-items: center; justify-content: center; color: white; z-index: 5; border-radius: 13px; }
+
+.upload-btn { background: var(--primary-soft); color: var(--primary); padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+
+/* --- FORMULARIO --- */
+.form-section { background: var(--white); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: var(--text-muted); }
+
+input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 1rem; background: white; }
+
+/* Estilo para Opciones Avanzadas */
+.advanced-toggle { color: var(--primary); font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px; margin-top: 10px; }
+.advanced-section { display: none; margin-top: 15px; padding: 15px; background: #fcfdfe; border-radius: 12px; border: 1px dashed var(--border); }
+
+.actions-panel { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.btn { padding: 14px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; }
+.btn-save { background: var(--primary); color: white; grid-column: span 2; }
+.btn-ai { background: var(--ai-purple); color: white; }
+.btn-bill { background: #f59e0b; color: white; }
+.btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+#aiStatus { font-size: 0.75rem; font-weight: 700; color: var(--ai-purple); margin-top: 10px; display: none; }
+
+@media (max-width: 768px) { .editor-grid { grid-template-columns: 1fr; } }

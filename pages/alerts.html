@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alertas y Garantía Extendida | GarantíaPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/alerts.css">
+    <!-- Supabase y Protección Global -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth_guard.js"></script>
+</head>
+<body>
+
+    <div class="main-content">
+        <a href="inventory.html" class="back-link">← Volver al Inventario</a>
+
+        <div class="header-section">
+            <span class="icon-bell">🔔</span>
+            <div>
+                <h1>Centro de Notificaciones</h1>
+                <p class="text-muted">Configura recordatorios críticos para tus garantías.</p>
+            </div>
+        </div>
+
+        <div class="alert-card">
+            <h3>🛡️ Alerta de Vencimiento Próximo</h3>
+            <p class="text-muted" style="font-size: 0.9rem; margin-top: 5px;">
+                Te avisaremos automáticamente para que revises el estado del equipo antes de que sea tarde.
+            </p>
+
+            <div class="setup-group">
+                <label>Seleccionar Activo:</label>
+                <select id="assetSelect"></select>
+
+                <label style="display: block; margin-top: 15px;">¿Cuándo quieres el aviso?</label>
+                <select id="daysBefore">
+                    <option value="5">5 días antes de vencer</option>
+                    <option value="15">15 días antes de vencer</option>
+                    <option value="30">1 mes antes de vencer</option>
+                </select>
+
+                <button class="btn btn-alert" onclick="setSmartReminder()">Configurar Alerta Inteligente</button>
+            </div>
+            <div id="statusMsg"></div>
+        </div>
+
+        <div class="alert-card">
+            <h3>💎 Extender Protección</h3>
+            <p class="text-muted" style="font-size: 0.9rem; margin-top: 5px;">
+                ¿Compraste años extra de protección? Regístralos aquí para recalcular el seguro.
+            </p>
+
+            <div class="setup-group" style="background: #eef4ff;">
+                <label>Añadir meses adicionales:</label>
+                <input type="number" id="extraMonths" placeholder="Ej: 12 o 24 meses">
+                
+                <div class="info-box">
+                    <strong>Nota:</strong> Al añadir meses, el Dashboard actualizará automáticamente el estado de "Vencido" a "Protegido".
+                </div>
+
+                <button class="btn btn-extend" onclick="extendWarranty()">Actualizar Cobertura</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/alerts.js"></script>
+</body>
+</html>

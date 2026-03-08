@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | GarantíaPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="login-split">
+        <div class="login-brand-side">
+            <div class="brand-content">
+                <span class="logo-emoji">✨</span>
+                <h1>Crea tu cuenta</h1>
+                <p>Únete a miles de personas que gestionan sus activos de forma inteligente.</p>
+                <div class="feature-list">
+                    <div class="feature-item">🛡️ Repositorio seguro en la nube</div>
+                    <div class="feature-item">☁️ Acceso desde cualquier dispositivo</div>
+                    <div class="feature-item">🤖 IA entrenada para mantenimiento</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-form-side">
+            <div class="form-card">
+                <h2>Regístrate gratis 🚀</h2>
+                <p class="subtitle">Empieza a organizar tus equipos hoy mismo</p>
+
+                <div id="auth-ui">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label>Correo Electrónico</label>
+                            <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input type="password" id="password" placeholder="••••••••" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn-primary">Crear cuenta</button>
+                    </form>
+
+                    <p class="footer-text">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+                </div>
+
+                <div id="loading-ui" style="display: none;">
+                    <div class="loader"></div>
+                    <p>Configurando tu espacio en la nube...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SDK de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="../js/firebase_config.js"></script>
+    <script src="../js/auth_guard.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>

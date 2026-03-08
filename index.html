@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GarantíaPro | Redireccionando...</title>
+    
+    <!-- SDK de Firebase (Compatibilidad v8) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <!-- Configuración y Seguridad -->
+    <script src="js/firebase_config.js"></script>
+    <script src="js/auth_guard.js"></script>
+    
+    <style>
+        body { display: flex; align-items: center; justify-content: center; height: 100vh; background: #f8fafc; font-family: sans-serif; }
+        .loader-box { text-align: center; color: #64748b; }
+        .loader { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #2563eb; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="loader-box">
+        <div class="loader"></div>
+        <p>Verificando tu cuenta en Firebase...</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Wizard | GarantíaPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ia_wizard.css">
+    
+    <!-- SDK de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="../js/firebase_config.js"></script>
+    <script src="../js/auth_guard.js"></script>
+</head>
+<body style="display: none;">
+
+    <div class="wizard-container">
+        <header class="wizard-header">
+            <a href="inventory.html" class="back-btn">← Volver</a>
+            <div class="ia-badge">Gemini IA 2.0</div>
+        </header>
+
+        <div class="wizard-card" id="wizardContent">
+            <!-- Estado 1: Inicial -->
+            <form id="wizardForm">
+                <span class="wizard-emoji">✨</span>
+                <h2>¿Qué equipo quieres registrar?</h2>
+                <p>Escribe el nombre y la IA se encargará del resto: categoría, plan de mantenimiento y búsqueda de imagen oficial.</p>
+                
+                <div class="input-group">
+                    <input type="text" id="inputObjeto" placeholder="Ej: BMW X5 2024, iPhone 15 Pro, Taladro Bosch..." required>
+                    <button type="submit" class="btn-ia-generate">Generar con IA</button>
+                </div>
+                <p class="hint">"The Workers" - Ecosistema de Mantenimiento Inteligente</p>
+            </form>
+
+            <!-- Estado 2: Cargando -->
+            <div id="loadingState" style="display: none;">
+                <div class="ai-loader"></div>
+                <h2 class="animate-pulse">Consultando el Cerebro IA...</h2>
+                <p>Estamos identificando el equipo y buscando imágenes reales.</p>
+            </div>
+
+            <!-- Estado 3: Éxito -->
+            <div id="resultState" style="display: none;">
+                <div class="success-icon">✅</div>
+                <h2>¡Equipo registrado con éxito!</h2>
+                <p>Se ha creado el activo y su plan de mantenimiento preventivo en Firestore.</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/ia_wizard.js"></script>
+</body>
+</html>

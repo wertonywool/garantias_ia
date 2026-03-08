@@ -1,0 +1,53 @@
+:root {
+    --primary: #0052ff; --primary-dark: #0041cc;
+    --bg: #f8fafc; --white: #ffffff; --border: #e2e8f0;
+    --text-main: #0f172a; --text-muted: #64748b;
+    --radius: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; }
+
+.container { max-width: 800px; margin: 4rem auto; padding: 0 1.5rem; }
+
+.header { margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+.back-link { text-decoration: none; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; transition: 0.2s; }
+.back-link:hover { color: var(--primary); }
+
+.form-card { 
+    background: var(--white); padding: 3rem; border-radius: 30px; 
+    border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+
+.section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; display: flex; align-items: center; gap: 10px; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.full-width { grid-column: 1 / -1; }
+
+.form-group { margin-bottom: 1.5rem; }
+label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.5px; }
+
+input, select { 
+    width: 100%; padding: 14px 18px; border-radius: 14px; border: 1.5px solid var(--border);
+    font-family: inherit; font-size: 1rem; transition: 0.3s; color: var(--text-main);
+}
+input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 82, 255, 0.1); }
+
+/* Estilo para subir imagen */
+.image-upload-zone {
+    width: 100%; height: 200px; border: 2px dashed var(--border); border-radius: var(--radius);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; background: #fcfdfe;
+}
+.image-upload-zone:hover { border-color: var(--primary); background: var(--primary-soft); }
+.image-upload-zone img { width: 100%; height: 100%; object-fit: cover; position: absolute; display: none; }
+.upload-placeholder { text-align: center; color: var(--text-muted); }
+
+.btn-submit { 
+    width: 100%; padding: 18px; background: var(--primary); color: white; border: none;
+    border-radius: 16px; font-weight: 800; font-size: 1.1rem; cursor: pointer;
+    margin-top: 2rem; transition: 0.3s;
+}
+.btn-submit:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 82, 255, 0.2); }
+
+.hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; }
